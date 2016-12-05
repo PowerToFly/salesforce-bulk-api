@@ -7,8 +7,12 @@
 
 from __future__ import unicode_literals, with_statement
 
-import csv
-from datetime import datetime, timedelta
+try:
+    import unicodecsv as csv
+except ImportError:
+    import csv
+
+from datetime import timedelta
 try:
     from cStringIO import StringIO
 except ImportError:
@@ -278,6 +282,6 @@ def itercsv(headers, data):
     for row in chain([headers], data):
         writer.writerow(row)
         buffer.seek(0)
-        yield buffer.read().encode('utf-8')
+        yield buffer.read()
         buffer.truncate(0)
         buffer.seek(0)
