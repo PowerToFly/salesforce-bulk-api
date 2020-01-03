@@ -40,7 +40,6 @@ setup(
     ],
     install_requires=[
         'requests>=2.5.3',
-        'unicodecsv==0.9.4',
         'simple_salesforce>=0.70.0'
     ]
 )
